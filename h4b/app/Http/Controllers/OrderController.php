@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Product;
 
 class OrderController extends Controller
 {
     public function index()
     {
         $order = Order::orderBy('created_at', 'DESC')->get();
-        return view('orders.index', compact('order'));
+        $product = Product::all();
+        return view('orders.index', compact('order','product'));
     }
 
     /**
@@ -18,7 +21,8 @@ class OrderController extends Controller
     public function create()
     {
         $order = Order::all();
-        return view('orders.create',compact('order'));
+        $product = Product::all();
+        return view('orders.create',compact('order','product'));
     }
 
     /**

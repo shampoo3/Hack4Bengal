@@ -23,36 +23,27 @@
             </tr>
         </thead>
         <tbody>
-            @if($product->count() > 0)
                 @foreach($order as $or)
                     <tr class = "shadow" style="border-radius:15px;">
                         <td class="align-middle">{{ $loop->iteration }}</td>
                         <td class="align-middle">{{ $or->user->name }}</td>
-                        <td class="align-middle">{{ $or->product->name }}</td>
+                        <td class="align-middle">{{ $or->ptd_id }}</td>
                         <td class="align-middle">{{ $or->quantity }}</td>
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="#" data-toggle="modal" data-target="#showModal_{{ $or->id }}">
                                                     <i class="fas fa-eye text-info" style="margin-right: 10px"></i>
                             </a>
-                                <a href="{{ route('products.edit', $rs->id)}}" type="button"> 
-                                    <i class="fas fa-edit text-primary" style="margin-right: 10px"></i>
-                                </a>
                             </div>
                         </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="5">Product not found</td>
-                </tr>
-            @endif
         </tbody>
     </table>
 
 
     <!-- Show Modal -->
-@foreach ($product as $rs)                  
+@foreach ($order as $or)                  
     <div class="modal fade" id="showModal_{{ $or->id }}" tabindex="-1" role="dialog" aria-labelledby="showModalLabel_{{ $or->id }}" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -68,11 +59,11 @@
                             </tr>
                             <tr>
                                 <th style="font-weight: 600; padding-left:30px;">Medicine Name:</th>
-                                <td style="font-weight: 500">{{ $or->product->name }}</td>
+                                <td style="font-weight: 500">{{ $or->pdt_id }}</td>
                             </tr>
                             <tr>
                                 <th style="font-weight: 600; padding-left:30px;">Quantity:</th>
-                                <td style="font-weight: 500">{{ $rs->quantity }}</td>
+                                <td style="font-weight: 500">{{ $or->quantity }}</td>
                             </tr>
                         </tbody>
                     </table>

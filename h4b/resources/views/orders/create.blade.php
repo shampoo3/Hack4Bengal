@@ -20,7 +20,11 @@
                         @endforeach
                     </select>
             </div>
- 
+            <div class="col">
+            <label for="user_id">Quantity:</label>
+            <input type="number" name="quantity" class="form-control" placeholder="Quantity">
+        </div>
+        </div>
         <div class="row">
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Submit</button>
